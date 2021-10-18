@@ -7,7 +7,8 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "./bin/app",
+    "start": "node ./bin/app",
+    "devstart": "nodemon ./bin/app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -15,6 +16,15 @@
     "http-errors": "^1.8.0",
     "pino": "^7.0.2",
     "pino-http": "^5.8.0",
-    "pino-pretty": "^7.1.0"
+    "pino-pretty": "^7.1.0",
+    "express-validator": "^6.11.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.13",
+    "cors": "^2.8.5",
+    "config": "^3.3.6",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }
