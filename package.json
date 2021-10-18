@@ -1,0 +1,20 @@
+{
+  "name": "twofishsecurebackend",
+  "version": "1.0.0",
+  "description": "Backend for TwoFish Secure Chat App",
+  "author": "Shagun Mishra <mshagun2001@gmail.com>",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "start": "./bin/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "pino": "^7.0.2",
+    "pino-http": "^5.8.0",
+    "pino-pretty": "^7.1.0"
+  }
+}
