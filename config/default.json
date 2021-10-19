@@ -1,4 +1,4 @@
 {
-  "mongoURI": "",
-  "jwtSecret": ""
+  "mongoURI": "mongodb://localhost/twofishDB",
+  "jwtSecret": "secret"
 }

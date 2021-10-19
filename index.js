@@ -3,7 +3,7 @@ const express = require("express");
 const httpErrors = require("http-errors");
 const pino = require("pino");
 const pinoHttp = require("pino-http");
-// const connectDB = require("./config/db");
+const connectDB = require("./config/db");
 const path = require("path");
 const cors = require("cors");
 // const fileUpload = require("express-fileupload");
@@ -53,6 +53,13 @@ function main(options, cb) {
   // Common middleware
   // app.use(/* ... */)
   app.use(pinoHttp({ logger }));
+  app.use(cors());
+
+  // Connect Database
+  connectDB();
+
+  // Init Middleware
+  app.use(express.json({ extended: false }));
 
   // Register routes
   // @NOTE: require here because this ensures that even syntax errors
