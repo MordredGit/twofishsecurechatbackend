@@ -6,7 +6,7 @@ const ConnectionSchema = mongoose.Schema({
     required: true,
   },
   connections: {
-    type: Array,
+    type: Object,
     required: true,
   },
 });
