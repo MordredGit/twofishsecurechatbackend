@@ -4,6 +4,7 @@ const ConnectionSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   connections: {
     type: Object,

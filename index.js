@@ -19,7 +19,7 @@ function main(options, cb) {
     options
   );
 
-  const logger = pino();
+  // const logger = pino();
 
   // Server state
   let server;
@@ -29,7 +29,7 @@ function main(options, cb) {
   // Setup error handling
   function unhandledError(err) {
     // Log the errors
-    logger.error(err);
+    // logger.error(err);
 
     // Only clean up once
     if (serverClosing) {
@@ -52,7 +52,7 @@ function main(options, cb) {
 
   // Common middleware
   // app.use(/* ... */)
-  app.use(pinoHttp({ logger }));
+  // app.use(pinoHttp({ logger }));
   app.use(cors());
 
   // Connect Database
@@ -81,7 +81,7 @@ function main(options, cb) {
   });
   app.use(function fiveHundredHandler(err, req, res, next) {
     if (err.status >= 500) {
-      logger.error(err);
+      // logger.error(err);
     }
     res.status(err.status || 500).json({
       messages: [
@@ -106,9 +106,9 @@ function main(options, cb) {
 
     serverStarted = true;
     const addr = server.address();
-    logger.info(
-      `Started at ${opts.host || addr.host || "localhost"}:${addr.port}`
-    );
+    // logger.info(
+    // `Started at ${opts.host || addr.host || "localhost"}:${addr.port}`
+    // );
     ready(err, app, server);
   });
 }

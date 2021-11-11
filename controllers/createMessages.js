@@ -5,18 +5,17 @@ const User = require("../models/User");
 
 const router = require("express").Router();
 
-router.post("/", async (req, res) => {
-  // const {username, connectname} = url.parse(req.url, true).query;
+router.get("/", async (req, res) => {
+  const { username, connectname, chat } = req.body;
   // const url = new URL(req.url, `http://${req.headers.host}/`);
 
-  const { username, connectname } = req.body;
+  // const { username, connectname } = new URLSearchParams(url.search);
   // const username = req.params.username;
   try {
-    let user = await User.findOne({ name: username });
-    let connect = await User.findOne({ name: connectname });
-    // console.log(user, connect);
+    let user = await User.findOne({ username });
+    let connect = await User.findOne({ connectname });
     if (!user || !connect) {
-      return res.status(200).json({ msg: "no user found" });
+      return res.status(400).json({ msg: "no user found" });
     }
 
     Chat.findOne({ name1: username, name2: connectname }, (err, result) => {
@@ -31,12 +30,18 @@ router.post("/", async (req, res) => {
             if (!result2)
               return res.status(400).json({ msg: "no messages found" });
 
-            return res.status(200).json({ messages: result2.messages });
+            result2.message.push(chat);
+            result2.markModified("message");
+            result2.save();
+            return res.status(200).json({ msg: "Saved Successfully" });
           }
         );
         return;
       }
-      return res.status(200).json({ messages: result.messages });
+      result.message.push(chat);
+      result.markModified("message");
+      result.save();
+      return res.status(200).json({ msg: "Saved Successfully" });
     });
   } catch (err) {
     console.log(err);

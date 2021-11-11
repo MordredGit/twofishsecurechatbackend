@@ -10,6 +10,7 @@ module.exports.default = function (app, opts) {
   // Define API Routes
   app.use("/api/users", require("./controllers/users"));
   app.use("/api/auth", require("./controllers/auth"));
-  app.use("/api/chat", require("./controllers/messages"));
+  app.use("/api/messages", require("./controllers/messages"));
+  app.use("/api/createmessages", require("./controllers/createMessages"));
   app.use("/api/connection", require("./controllers/connections"));
 };
